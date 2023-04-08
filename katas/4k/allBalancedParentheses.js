@@ -40,8 +40,6 @@ const allBalancedParentheses = (n) => {
     }
     if(open == 0 && close == 0){
         answers.push(str)
-        const otherAnswers = allBalancedParentheses(n-1)
-        answers.push(...otherAnswers)
     }
     return answers
 }
