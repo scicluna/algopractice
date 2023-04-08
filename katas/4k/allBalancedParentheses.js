@@ -18,13 +18,15 @@
 // Keep building the string using these rules and explore all possible combinations by calling the recursive function with updated 
 // counts of open and close parentheses.
 
+//NO IDEA WHAT IM DOING
 const allBalancedParentheses = (n) => {
     
-    if (n == 0) return ''
+    if (n == 0) return ['']
 
     let open = n
     let close = n
 
+    let answers = []
     let str =''
     while(open > 0 || close > 0){
 
@@ -36,9 +38,12 @@ const allBalancedParentheses = (n) => {
             open--
         }
     }
-    console.log(str)
-
-    return allBalancedParentheses(n-1)
+    if(open == 0 && close == 0){
+        answers.push(str)
+        const otherAnswers = allBalancedParentheses(n-1)
+        answers.push(...otherAnswers)
+    }
+    return answers
 }
 
-console.log(allBalancedParentheses(1))
+console.log(allBalancedParentheses(2))
