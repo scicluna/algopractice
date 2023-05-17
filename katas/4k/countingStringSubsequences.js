@@ -17,47 +17,38 @@
 // Since the answers can be very large, return only the last 8 digits of the answer in case it exceeds 8 digits. 
 // The answers to the test cases will all be shorter than 8 digits.
 
-
+// FAIL
 function countSubsequences(needle, haystack) {
-    let map = {}
-    let needlemap = {}
-    let legit = []
-    let total = 0
-
     const hayArray = haystack.split('')
 
-    let i = 0
+    let j = 0
     while (true) {
-        if (hayArray[i] == needle[i]) {
-            hayArray.splice(0, i)
+        if (hayArray[j] == needle[0]) {
+            hayArray.splice(0, j)
             break;
         }
-        i++
+        j++
     }
 
-    hayArray.forEach(hay => {
-        map[hay] ? map[hay]++ : map[hay] = 1
-    })
+    while (true) {
+        for (let i = 0; i < needle.length; i++) {
+            for (let j = 0; j < hayArray.length; j++) {
+                let currentMatcher = needle[i]
+                if (currentMatcher == hayArray[j]) {
+                    score[currentMatcher] ? score[currentMatcher]++ : score[currentMatcher] = 1
+                }
+            }
+        }
 
-    needle.split('').forEach(need => {
-        needlemap[need] ? needlemap[need]++ : needlemap[need] = 1
-    })
-
-    console.log(needlemap)
-    console.log(map)
-
-
-    for (const key in needlemap) {
-        if (map[key] == needlemap[key] || map[key] == needlemap[key] + 1) {
-            map[key] = 1
-            legit.push(map[key])
-        } else legit.push(map[key])
     }
 
-    console.log(legit)
-    total = legit.reduce((a, b) => a * b)
+    console.log(hayArray)
 
+
+
+    //total = legit.reduce((a, b) => a * b)
     return Number(total.toString().slice(-8))
 }
 
 console.log(countSubsequences("happy birthday", "appyh appy birth day")) //2048
+                                                    //happy birthday // h appy birth day
