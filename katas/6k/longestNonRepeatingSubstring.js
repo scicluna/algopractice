@@ -17,7 +17,6 @@ function longestNonRepeating(string) {
         }
     }
     if (currentstring.length > maxstring.length) return currentstring
-
     return maxstring
 }
 console.log(longestNonRepeating('ABCDDDEFGHI'))
