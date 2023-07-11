@@ -48,6 +48,7 @@ def carFleet(target: int, position: list[int], speed: list[int]):
         fleets[stack[0]] = 1
     return len(fleets)
 
+#better
 def carFleet2(target: int, position: list[int], speed:list[int]) -> int:
     cars = sorted(zip(position, speed))
     times = [float(target - p) / s for p, s in cars]
