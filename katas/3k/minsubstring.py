@@ -5,8 +5,6 @@
 
 # The testcases will be generated such that the answer is unique.
 
- 
-
 def minWindow(s:str, t:str)-> str:
     results = []
     lw = 0
