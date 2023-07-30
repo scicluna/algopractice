@@ -37,33 +37,25 @@
 // 1 -> 5 -> 2
 // 2 -> 4 -> 3
 function reorderList(head) {
-    main = head
-    function walk(head, n) {
-        //break recursion
-        if (!head) return
-        //temp variable
-        curr = head?.next
-        //find last head - n
-        last = lasthead(head, n)
-        //set our end functions next to the last
-        last.next = curr
-        main.next = last
-        //rerun it with main.next
-        walk(main.next, n + 1)
+    let arr = []
+    let node = head
+    while (node) {
+        arr.push(node)
+        node = node.next
     }
-    function lasthead(head, n) {
-        let test = head
-        let length = 0
-        while (test) {
-            test = test.next
-            length += 1
+
+    let i = 0, j = arr.length - 1;
+    while (i < j) {
+        arr[i].next = arr[j];
+        i++;
+
+        if (i == j) {
+            break;
         }
-        let result = head
-        while (result?.next && length - n > 0) {
-            result = result.next
-        }
-        return result
+
+        arr[j].next = arr[i];
+        j--;
     }
-    walk(main, 0)
-    return main
+    arr[i].next = null;
+    return head
 }
