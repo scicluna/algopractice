@@ -34,7 +34,6 @@ function removeNthFromEnd(head, n) {
                 arr[i].val = null
                 arr[i].next = null
             }
-
         }
     }
 
